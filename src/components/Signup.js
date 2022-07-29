@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../images/Central.png";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [username, setUserName] = useState("");
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassWord] = useState("");
+  const [confrimpassword, setConfirmPassword] = useState("");
+  const Navigate = useNavigate;
+
+  const submitHandler = (e) => {
+    setUserName("");
+    setFullName();
+    setEmail("");
+    setPassWord("");
+    setConfirmPassword("");
+    e.preventDefault();
+    Navigate = "/signedin";
+  };
+
   return (
     <div>
       <div className="flex items-center flex-col ">
@@ -14,34 +33,48 @@ const Signup = () => {
           <input
             type="text"
             placeholder="Username"
-            className="px-3 py-2 border-b border-black outline-none w-[300px] ml-2"
+            className="px-3 py-2 border-b border-black outline-none w-[300px] ml-2
+            "
+            onChange={(e) => setUserName(e.target.value)}
+            value={username}
           />
           <input
             type="text"
             placeholder="Fullname"
             className="px-3 py-2 border-b border-black outline-none w-[300px] ml-2"
+            onChange={(e) => setFullName(e.target.value)}
+            value={fullname}
           />
           <input
             type="email"
             placeholder="Email"
             className="px-3 py-2 border-b border-black outline-none w-[300px] ml-2"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <input
             type="password"
             placeholder="Password"
             className="px-3 py-2 border-b border-black outline-none w-[300px] ml-2"
+            onChange={(e) => setPassWord(e.target.value)}
+            value={password}
           />
           <input
             type="password"
             placeholder="Confirm Password"
             className="px-3 py-2 border-b border-black outline-none w-[300px] ml-2"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confrimpassword}
           />
           <div className="flex flex-col items-center">
             <p>
               Already have an account?
               <span className="font-bold text-blue-500"> Log in</span>
             </p>
-            <button className="bg-blue-500 text-white px-3 py-2 w-[100px] mt-5">
+            <button
+              className="bg-blue-500 text-white px-3 py-2 w-[100px] mt-5 "
+              onClick={submitHandler}
+            >
               Sign up
             </button>
           </div>
