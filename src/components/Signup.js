@@ -9,7 +9,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
   const [confrimpassword, setConfirmPassword] = useState("");
-  const Navigate = useNavigate;
+  const navigate = useNavigate;
 
   const submitHandler = (e) => {
     setUserName("");
@@ -18,7 +18,7 @@ const Signup = () => {
     setPassWord("");
     setConfirmPassword("");
     e.preventDefault();
-    Navigate = "/signedin";
+    navigate("/signedin");
   };
 
   return (
@@ -81,8 +81,9 @@ const Signup = () => {
           <div className="flex flex-col items-center">
             <span className="text-sm">
               I accept the
-              <span className="text-blue-500"> Terms of Service</span> and the
-              <span className="text-blue-500"> Pirvacy Policy</span>
+              <a className="text-blue-500 cursor-pointer"> Terms of Service </a>
+              and the
+              <a className="text-blue-500 cursor-pointer"> Pirvacy Policy</a>
             </span>
             <span className="text-sm mt-2">
               I will like to receive emails regarding updates
@@ -90,11 +91,20 @@ const Signup = () => {
           </div>
         </form>
         <div className="flex  items-center gap-10 mt-5">
-          <a href="#">Terms of Service</a>
-          <a href="#">Contacts</a>
-          <a href="#">Pirvacy Policy</a>
+          <a className="hover:text-blue-500" href="#">
+            Terms of Service
+          </a>
+          <a className="hover:text-blue-500" href="#">
+            Contacts
+          </a>
+
+          <a className="hover:text-blue-500" href="#">
+            Pirvacy Policy
+          </a>
         </div>
-        <p className="mt-4">&copy; 2022 Central</p>
+        <a href="#" className="mt-4 hover:text-blue-500">
+          &copy; 2022 Central
+        </a>
       </div>
     </div>
   );
