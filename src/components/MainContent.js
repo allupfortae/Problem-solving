@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBar from "./SideBar";
 import { AiOutlineSearch } from "react-icons/ai";
 import ListItems from "./ListItems";
+import { MdLinkedCamera } from "react-icons/md";
+import { TiTimes } from "react-icons/ti";
 
 const MainContent = () => {
+  const [updatelist, setUpDateList] = useState("");
+
+  const updateHandler = () => {
+    setUpDateList();
+  };
+
   const listBar = [
     "HTML",
     "CSS",
@@ -21,10 +29,19 @@ const MainContent = () => {
       <div className="grid grid-cols-2 w-[120px]">
         <SideBar />
         <div className="w-[1380px] relative">
-          <AiOutlineSearch className="absolute top-[30px] right-0 -translate-x-[215px] text-lg" />
-          <div className="mt-5">
+          <AiOutlineSearch
+            className="absolute top-[30px] right-0 -translate-x-[215px]
+					translate-y-[20px] text-lg"
+          />
+          <div className="mt-3">
             <div className="flex items-center justify-between ">
-              <h1 className="font-semibold text-3xl  ml-10">Pick an PGL</h1>
+              <div className="ml-10 relative">
+                <TiTimes className="absolute top-[65px]  right-[10px] text-lg" />
+                <h1 className="font-semibold text-2xl mb-5">Pick an PGL</h1>
+                <p className="bg-[#F5F5F5] text-center p-2 text-base rounded-[15px]">
+                  {updatelist}
+                </p>
+              </div>
               <input
                 type="search"
                 placeholder="Search for PGL"
@@ -33,7 +50,15 @@ const MainContent = () => {
             </div>
             <ul className="grid grid-cols-10 text-center  mt-5 border-t border-gray-300 bg-[#F5F5F5F5] p-4">
               {listBar.map((list) => {
-                return <li>{list}</li>;
+                return (
+                  <li
+                    className="cursor-pointer active "
+                    onClick={updateHandler}
+                    key={list.index}
+                  >
+                    {list}
+                  </li>
+                );
               })}
             </ul>
           </div>

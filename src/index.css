@@ -9,3 +9,8 @@
 .card {
   box-shadow: -2px -1px 15px -3px rgba(0, 0, 0, 0.18);
 }
+
+.active:hover {
+  text-decoration: underline;
+  color: #3c82f6;
+}
